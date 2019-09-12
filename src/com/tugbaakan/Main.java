@@ -5,10 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
@@ -66,12 +63,19 @@ public class Main {
                 System.out.println(item.getID() + " for " + item.getName());
             }
             System.out.println("Enter 4 to exit");
-            inp_cate_ID = scanner.nextInt();
-            if (inp_cate_ID == 4) {
-                quit = true;
-            } else {
-                recipeJournal.listRecipes(inp_cate_ID);
+            try{
+                inp_cate_ID = scanner.nextInt();
+                if (inp_cate_ID == 4) {
+                    quit = true;
+                } else {
+                    recipeJournal.listRecipes(inp_cate_ID);
+                }
+            } catch (InputMismatchException e){
+                scanner.nextLine();
+                System.out.println("Please only enter the number written below:");
             }
+
+
         }
     }
 }
